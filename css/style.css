@@ -297,6 +297,9 @@ header .intro-text {
 	font-weight: 600;
 	color: #555;
 	margin-top: -26px;
+	background-color: white;
+	z-index: 99;
+	position: relative;
 }
 /* Portfolio Section */
 #portfolio {

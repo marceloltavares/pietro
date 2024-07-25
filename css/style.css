@@ -51,7 +51,7 @@ ul, ol {
 	visibility: hidden;
 	display: block;
 	font-size: 0;
-	content: " ";
+	content: '';
 	clear: both;
 	height: 0;
 }
@@ -626,4 +626,68 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 }
 #footer a:hover {
 	color: #333;
+}
+
+.ocultar-impressao {
+  display: block;
+}
+.logo {
+  filter: none;
+}
+
+@media print {
+	@page {
+        size: A4; 
+        margin: 0;
+    }
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-image: url(../img/bkprint.jpg)!important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../img/bkprint.jpg)!important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        z-index: -1; /* Garante que a imagem fique atrás do conteúdo */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+	.content {
+        box-sizing: border-box;
+        position: relative; /* Para garantir que o z-index funcione */
+        z-index: 1; /* Garante que o conteúdo fique acima da imagem de fundo */
+    }
+	.ocultar-impressao {
+		display: none;
+	}
+	.logo {
+		filter: invert(1); 
+	}
+	.quebra-pagina-top {
+		page-break-before: always;
+		display: block !important;
+		width: 100%; 
+		margin-top: 40mm !important;
+		float: none !important;
+	}
+	.container {
+		margin: 15mm !important;
+	}
 }
